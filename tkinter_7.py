@@ -1,5 +1,26 @@
 # import modules
 import tkinter as tk
+from tkinter import filedialog as fd
+
+
+# functions section
+def text_file():  # display content of text files
+    text.delete(1.0, 'end')  # clear text field
+    file_name = fd.askopenfilename()
+    file = open(file_name)
+    content = file.read()
+    text.insert(1.0, content)
+    file.close()
+
+
+def save_file():  # save text in new text file
+    # default file type is .txt
+    file_name = fd.asksaveasfilename(filetypes=[('Text Files', '*.txt'), ('All Files', '*.*')], defaultextension='txt')
+    file = open(file_name, 'w')
+    content = text.get(1.0, 'end-1c')
+    file.write(content)
+    file.close()
+
 
 # root window
 root = tk.Tk()
@@ -19,8 +40,8 @@ main_frame.rowconfigure(0, weight=400)
 main_frame.rowconfigure(1, weight=100)
 
 text = tk.Text(main_frame)
-btn_file_open = tk.Button(main_frame, text='Open text file')
-btn_file_record = tk.Button(main_frame, text='Save text file')
+btn_file_open = tk.Button(main_frame, text='Open text file', command=text_file)
+btn_file_record = tk.Button(main_frame, text='Save text file', command=save_file)
 
 # widgets style
 main_frame.config(bg=color_1)
