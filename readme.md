@@ -5,3 +5,4 @@ list of works:
 2. tkinter_2.py - create a constructor and six windows using a constructor with a different layout of widgets
 3. tkinter_3.py - create nine windows with a different layout of label
 4. tkinter_4.py - create clicker
+5. tkinter_5.py - switch themes
