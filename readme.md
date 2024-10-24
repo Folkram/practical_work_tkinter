@@ -7,3 +7,4 @@ list of works:
 4. tkinter_4.py - create clicker
 5. tkinter_5.py - switch themes
 6. tkinter_6.py - window with six buttons that display various messagebox 
+7. tkinter_7.py - open and save text files
