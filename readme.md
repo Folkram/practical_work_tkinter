@@ -6,3 +6,4 @@ list of works:
 3. tkinter_3.py - create nine windows with a different layout of label
 4. tkinter_4.py - create clicker
 5. tkinter_5.py - switch themes
+6. tkinter_6.py - window with six buttons that display various messagebox 
