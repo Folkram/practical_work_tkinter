@@ -23,6 +23,15 @@ def pattern():  # insert pattern into all fields
     text_about_yourself.tag_config('fifth', font=('Arial', round(def_font_size * 0.6)))
 
 
+def show_password():  # show or hide password
+    if button_show_password['text'] == 'Show password':
+        entry_password['show'] = ''
+        button_show_password['text'] = 'Hide password'
+    else:
+        entry_password['show'] = '*'
+        button_show_password['text'] = 'Show password'
+
+
 # root window
 root = tk.Tk()
 root.title('Form')
@@ -42,7 +51,7 @@ entry_name = tk.Entry(main_frame)
 label_password = tk.Label(main_frame, text='Enter your password')
 entry_password = tk.Entry(main_frame, show='*')
 button_pattern = tk.Button(main_frame, text='Pattern', command=pattern)
-button_show_password = tk.Button(main_frame, text='Show password')
+button_show_password = tk.Button(main_frame, text='Show password', command=show_password)
 button_post = tk.Button(main_frame, text='Send')
 button_clear = tk.Button(main_frame, text='Clear')
 
