@@ -1,5 +1,6 @@
 # import module
 import tkinter as tk
+from tkinter import messagebox as mb
 
 
 # functions section
@@ -32,6 +33,26 @@ def show_password():  # show or hide password
         button_show_password['text'] = 'Show password'
 
 
+def post():  # send user data
+    # check availability of data in the fields
+    if entry_name.get() != '' and entry_password.get() != '' and text_about_yourself.get(1.0) != '':
+        # check availability of space in start of field
+        if (ord(entry_name.get()[0]) != 32 and ord(entry_password.get()[0]) != 32
+                and ord(text_about_yourself.get(1.0)[0])):
+            mb.showinfo('Success', f'Thank you for your time, {entry_name.get()}.\n'
+                                   f'You have successfully submitted your application!')
+            # clear all field
+            text_about_yourself.delete(1.0, 'end')
+            entry_name.delete(0, 'end')
+            entry_password.delete(0, 'end')
+        else:  # if fields are empty or there is space at begin of the fields
+            mb.showerror('Error', 'An error has occurred! One of the fields is not filled in!\n'
+                                  'Please fill in all the fields and try again')
+    else:  # if fields are empty or there is space at begin of the fields
+        mb.showerror('Error', 'An error has occurred! One of the fields is not filled in!\n'
+                              'Please fill in all the fields and try again')
+
+
 # root window
 root = tk.Tk()
 root.title('Form')
@@ -52,7 +73,7 @@ label_password = tk.Label(main_frame, text='Enter your password')
 entry_password = tk.Entry(main_frame, show='*')
 button_pattern = tk.Button(main_frame, text='Pattern', command=pattern)
 button_show_password = tk.Button(main_frame, text='Show password', command=show_password)
-button_post = tk.Button(main_frame, text='Send')
+button_post = tk.Button(main_frame, text='Send', command=post)
 button_clear = tk.Button(main_frame, text='Clear')
 
 # widgets style
