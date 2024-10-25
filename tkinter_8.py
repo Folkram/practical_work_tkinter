@@ -19,6 +19,10 @@ label_name = tk.Label(main_frame, text='Enter your name')
 entry_name = tk.Entry(main_frame)
 label_password = tk.Label(main_frame, text='Enter your password')
 entry_password = tk.Entry(main_frame, show='*')
+button_pattern = tk.Button(main_frame, text='Pattern')
+button_show_password = tk.Button(main_frame, text='Show password')
+button_post = tk.Button(main_frame, text='Send')
+button_clear = tk.Button(main_frame, text='Clear')
 
 # widgets style
 label_main.config(font=('Arial', round(def_font_size*2.5), 'bold'))
@@ -26,6 +30,10 @@ label_text_about_yourself.config(font=('Arial', round(def_font_size*1.2), 'itali
 text_about_yourself.config(width=def_width, height=def_height, wrap='word', font=('Arial', def_font_size))
 label_name.config(font=('Arial', def_font_size, 'italic'))
 label_password.config(font=('Arial', def_font_size, 'italic'))
+button_pattern.config(width=round(def_width/2), font=('Arial', round(def_font_size*0.9)))
+button_show_password.config(width=round(def_width/2), font=('Arial', round(def_font_size*0.9)))
+button_post.config(width=round(def_width/2), font=('Arial', round(def_font_size*0.9)))
+button_clear.config(width=round(def_width/2), font=('Arial', round(def_font_size*0.9)))
 
 # placement of widgets
 main_frame.pack(expand=1)
@@ -36,5 +44,9 @@ label_name.grid(column=0, row=3, sticky='w')
 entry_name.grid(column=1, row=3, sticky='e')
 label_password.grid(column=0, row=4, sticky='w')
 entry_password.grid(column=1, row=4, sticky='e')
+button_pattern.grid(column=0, row=5, pady=(10, 0), sticky='w')
+button_show_password.grid(column=1, row=5, pady=(10, 0), sticky='e')
+button_post.grid(column=0, row=6, pady=(5, 0), sticky='w')
+button_clear.grid(column=1, row=6, pady=(5, 0), sticky='e')
 
 root.mainloop()  # display window
