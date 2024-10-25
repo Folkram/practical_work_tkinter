@@ -5,7 +5,7 @@ from tkinter import messagebox as mb
 
 # functions section
 def pattern():  # insert pattern into all fields
-    text_about_yourself.delete(1.0, 'end')
+    clear()  # clear all field
     text_about_yourself.insert(1.0, "A good and honest man \n"
                                     "who is also very hardworking,\n"
                                     "but that's not all! I'm also very humble.\n"
@@ -41,10 +41,7 @@ def post():  # send user data
                 and ord(text_about_yourself.get(1.0)[0])):
             mb.showinfo('Success', f'Thank you for your time, {entry_name.get()}.\n'
                                    f'You have successfully submitted your application!')
-            # clear all field
-            text_about_yourself.delete(1.0, 'end')
-            entry_name.delete(0, 'end')
-            entry_password.delete(0, 'end')
+            clear()  # clear all field
         else:  # if fields are empty or there is space at begin of the fields
             mb.showerror('Error', 'An error has occurred! One of the fields is not filled in!\n'
                                   'Please fill in all the fields and try again')
