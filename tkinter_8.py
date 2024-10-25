@@ -53,6 +53,12 @@ def post():  # send user data
                               'Please fill in all the fields and try again')
 
 
+def clear():  # clear all fields
+    text_about_yourself.delete(1.0, 'end')  # clear text field
+    entry_name.delete(0, 'end')  # clear name field
+    entry_password.delete(0, 'end')  # clear password field
+
+
 # root window
 root = tk.Tk()
 root.title('Form')
@@ -74,7 +80,7 @@ entry_password = tk.Entry(main_frame, show='*')
 button_pattern = tk.Button(main_frame, text='Pattern', command=pattern)
 button_show_password = tk.Button(main_frame, text='Show password', command=show_password)
 button_post = tk.Button(main_frame, text='Send', command=post)
-button_clear = tk.Button(main_frame, text='Clear')
+button_clear = tk.Button(main_frame, text='Clear', command=clear)
 
 # widgets style
 label_main.config(font=('Arial', round(def_font_size*2.5), 'bold'))
