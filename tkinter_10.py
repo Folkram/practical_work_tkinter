@@ -1,5 +1,16 @@
-# import module
+# import modules
 import tkinter as tk
+from tkinter import messagebox as mb
+
+
+# function section
+def show_translate():  # display messagebox with translate
+    if listbox.curselection() == ():
+        mb.showerror('Error', 'None of the options are selected')
+    else:
+        translate = options_translate[listbox.curselection()[0]]  # get translation for current word
+        mb.showinfo(f'{listbox.get(listbox.curselection()[0])}', f'Word translation: {translate}')
+
 
 # root window
 root = tk.Tk()
@@ -9,7 +20,7 @@ root.geometry('280x325')
 # widgets section
 listbox = tk.Listbox(root)
 scroll = tk.Scrollbar(root, orient='vertical', command=listbox.yview)
-btn_translate = tk.Button(root, text='Translate')
+btn_translate = tk.Button(root, text='Translate', command=show_translate)
 
 # widgets style
 listbox.config(yscrollcommand=scroll.set, font=('Arial', 18), width=20)
