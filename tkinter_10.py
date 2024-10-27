@@ -20,4 +20,16 @@ listbox.grid()
 scroll.grid(column=1, row=0, sticky='news')
 btn_translate.grid(columnspan=2, row=1, sticky='news')
 
+# options for listbox
+options = ['artichoke', 'eggplant', 'bobs', 'ginger', 'marrow', 'cabbage', 'cauliflower', 'broccoli', 'brussels sprout',
+           'apricot', 'avocado', 'pine apple', 'orange', 'watermelon', 'banana', 'blackberry']
+# translate for options
+options_translate = ['артишок', 'баклажан', 'бобы', 'имбирь', 'кабачок', 'капуста', 'цветная капуста', 'брокколи',
+                     'брюссельская капуста', 'абрикос', 'авокадо', 'ананас', 'апельсин', 'арбуз', 'банан', 'ежевика']
+# insert options into listbox
+i = 0  # counter
+for option in options:
+    listbox.insert(i, option)
+    i += 1
+
 root.mainloop()  # display window
