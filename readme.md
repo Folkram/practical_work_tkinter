@@ -10,3 +10,4 @@ list of works:
 7. tkinter_7.py - open and save text files
 8. tkinter_8.py - form
 9. tkinter_9.py - notepad
+10. tkinter_10.py - translator
