@@ -17,6 +17,17 @@ class MyButton:  # create button
         self.btn.pack(fill='both', padx=m_padx, pady=m_pady)
 
 
+class MyRadiobutton:  # create radiobutton
+    def __init__(self, m_root, m_text, m_variable, m_value, m_indicatoron=False, m_bg='#00063d', m_fg='#7df0ff',
+                 m_border=0, m_activebg='#010d7a', m_activefg='#7df0ff', m_selectcolor='#010d7a',
+                 m_font=('Arial', 16, 'italic'), m_padx=5, m_pady=(5, 0)):
+        self.radiobtn = tk.Radiobutton(m_root, text=m_text, variable=m_variable, value=m_value,
+                                       indicatoron=m_indicatoron, bg=m_bg, fg=m_fg, border=m_border,
+                                       activebackground=m_activebg, activeforeground=m_activefg,
+                                       selectcolor=m_selectcolor, font=m_font)
+        self.radiobtn.pack(fill='both', padx=m_padx, pady=m_pady)
+
+
 # root window
 root = tk.Tk()
 root.title('Quiz about penguins')
