@@ -10,6 +10,13 @@ class MyLabel:  # create label
         self.label.pack(padx=m_padx, pady=m_pady)
 
 
+class MyButton:  # create button
+    def __init__(self, m_root, m_text, m_bg, m_fg, m_border, m_activebg, m_activefg, m_font, m_padx, m_pady, m_command):
+        self.btn = tk.Button(m_root, text=m_text, bg=m_bg, fg=m_fg, border=m_border, activebackground=m_activebg,
+                             activeforeground=m_activefg, font=m_font, command=m_command)
+        self.btn.pack(fill='both', padx=m_padx, pady=m_pady)
+
+
 # root window
 root = tk.Tk()
 root.title('Quiz about penguins')
