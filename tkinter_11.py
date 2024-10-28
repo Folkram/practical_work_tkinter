@@ -46,4 +46,12 @@ btn_frame = tk.Frame(root, bg=color1)
 greeting_frame.pack(fill='both', expand=1)
 btn_frame.pack(fill='both', side='bottom')
 
+# content
+text_of_greeting = ('Welcome to a little penguin quiz. You will be asked three questions to assess your knowledge in '
+                    'this area. To continue, click the button below.')
+MyLabel(greeting_frame, 'Welcome!', color1, color2, ('Arial', 28, 'bold'), 350,
+        'center', 0, (75, 50))  # heading
+MyLabel(greeting_frame, text_of_greeting, color1, color2, ('Arial', 16, 'italic'), 340,
+        'left',  5, 25)  # greeting
+
 root.mainloop()  # display window
