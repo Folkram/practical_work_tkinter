@@ -48,8 +48,8 @@ def to_tq():  # switch to the third question
         # close second question and result
         second_question_frame.forget()
         btn_sq_frame.forget()
-        frame_result.forget()
-        frame_btn_result.forget()
+        result_frame.forget()
+        btn_result_frame.forget()
 
         # show the third question
         third_question_frame.pack(fill='both', expand=1)
@@ -65,10 +65,10 @@ def to_result():  # switch to the result and change text
         btn_tq_frame.forget()
 
         # show the result
-        frame_result.pack(fill='both', expand=1)
-        frame_btn_result.pack(fill='both', side='bottom')
+        result_frame.pack(fill='both', expand=1)
+        btn_result_frame.pack(fill='both', side='bottom')
 
-        label_result['text'] = get_result()  # change result text
+        result_label['text'] = get_result()  # change result text
 
 
 def get_result():  # get the result text
@@ -128,7 +128,7 @@ root = tk.Tk()
 root.title('Quiz about penguins')
 root.geometry('350x500')
 root.resizable(width=False, height=False)
-# colors
+# color section
 color1 = '#7df0ff'
 color2 = '#00063d'
 color3 = '#010d7a'
@@ -162,10 +162,10 @@ btn_fq_frame = tk.Frame(root, bg=color1)
 # content
 # label section
 fq_text = 'How many species are there in the penguin group?'
-label_title_fq = MyLabel(first_question_frame, 'Question №1', color1, color2, ('Arial', 28, 'bold'),
-                         350, 'left', 0, (50, 25))
-label_fq = MyLabel(first_question_frame, fq_text, color1, color2, ('Arial', 16, 'italic'), 340,
-                   'left',  5, (0, 35))
+MyLabel(first_question_frame, 'Question №1', color1, color2, ('Arial', 28, 'bold'),
+        350, 'left', 0, (50, 25))
+MyLabel(first_question_frame, fq_text, color1, color2, ('Arial', 16, 'italic'), 340,
+        'left',  5, (0, 35))
 # radiobutton section
 fq_options = tk.StringVar()  # common variable for first question
 fq_option_1 = MyRadiobutton(first_question_frame, '876', fq_options, 1)
@@ -188,7 +188,7 @@ sq_text = 'How long have penguins been around?'
 MyLabel(second_question_frame, 'Question №2', color1, color2, ('Arial', 28, 'bold'),
         350, 'left', 0, (50, 25))
 MyLabel(second_question_frame, sq_text, color1, color2, ('Arial', 16, 'italic'), 340,
-        'left',  5, (0, 60))
+        'left',  5, (0, 35))
 # radiobutton section
 sq_options = tk.StringVar()  # common variable for second question
 sq_option_1 = MyRadiobutton(second_question_frame, '50 million years ago', sq_options, 1)
@@ -225,18 +225,18 @@ MyButton(btn_tq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 1
 
 # result
 # frame section
-frame_result = tk.Frame(root, bg=color1)
-frame_btn_result = tk.Frame(root, bg=color1)
+result_frame = tk.Frame(root, bg=color1)
+btn_result_frame = tk.Frame(root, bg=color1)
 
 # content
 # label section
-MyLabel(frame_result, 'Result', color1, color2, ('Arial', 28, 'bold'),
+MyLabel(result_frame, 'Result', color1, color2, ('Arial', 28, 'bold'),
         350, 'left', 0, (50, 25))  # title
-label_result = tk.Label(frame_result, bg=color1, fg=color2, font=('Arial', 16, 'italic'), wraplength=340,
+result_label = tk.Label(result_frame, bg=color1, fg=color2, font=('Arial', 16, 'italic'), wraplength=340,
                         justify='left')  # result text
-label_result.pack(padx=5, pady=(0, 35))
+result_label.pack(padx=5, pady=(0, 35))
 # button section
-MyButton(frame_btn_result, '<< Exit >>', color2, color1, 0, color1, color2,
+MyButton(btn_result_frame, '<< Exit >>', color2, color1, 0, color1, color2,
          ('Arial', 14), 5, (0, 5), lambda: root.destroy())
 
 root.mainloop()  # display window
