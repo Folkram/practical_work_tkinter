@@ -82,4 +82,27 @@ MyButton(btn_fq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 1
 MyButton(btn_fq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
          5, 5, lambda: print('Go to the previous frame'))  # to previous frame
 
+# second question
+# frame section
+second_question_frame = tk.Frame(root, bg=color1)
+btn_sq_frame = tk.Frame(root, bg=color1)
+
+# content
+# label section
+sq_text = 'How long have penguins been around?'
+MyLabel(second_question_frame, 'Question №2', color1, color2, ('Arial', 28, 'bold'),
+        350, 'left', 0, (50, 25))
+MyLabel(second_question_frame, sq_text, color1, color2, ('Arial', 16, 'italic'), 340,
+        'left',  5, (0, 60))
+# radiobutton section
+sq_options = tk.StringVar()  # common variable for second question
+sq_option_1 = MyRadiobutton(second_question_frame, '50 million years ago', sq_options, 1)
+sq_option_2 = MyRadiobutton(second_question_frame, '60 million years ago', sq_options, 2)
+sq_option_3 = MyRadiobutton(second_question_frame, '30 million years ago', sq_options, 3)
+# button section
+MyButton(btn_sq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 0, lambda: print('Go to the next frame'))  # to the next frame
+MyButton(btn_sq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
+
 root.mainloop()  # display window
