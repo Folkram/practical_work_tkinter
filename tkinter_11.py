@@ -59,4 +59,27 @@ MyButton(btn_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
 MyButton(btn_frame, '<< Exit', color2, color1, 0, color1, color2, ('Arial', 14),
          5, 5, lambda: root.destroy())  # close window
 
+# first question
+# frame section
+first_question_frame = tk.Frame(root, bg=color1)
+btn_fq_frame = tk.Frame(root, bg=color1)
+
+# content
+# label section
+fq_text = 'How many species are there in the penguin group?'
+label_title_fq = MyLabel(first_question_frame, 'Question №1', color1, color2, ('Arial', 28, 'bold'),
+                         350, 'left', 0, (50, 25))
+label_fq = MyLabel(first_question_frame, fq_text, color1, color2, ('Arial', 16, 'italic'), 340,
+                   'left',  5, (0, 35))
+# radiobutton section
+fq_options = tk.StringVar()  # common variable for first question
+fq_option_1 = MyRadiobutton(first_question_frame, '876', fq_options, 1)
+fq_option_2 = MyRadiobutton(first_question_frame, '23', fq_options, 2)
+fq_option_3 = MyRadiobutton(first_question_frame, '17', fq_options, 3)
+# button section
+MyButton(btn_fq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
+                       5, 0, lambda: print('Go to the next frame'))  # to next frame
+MyButton(btn_fq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 5, lambda: print('Go to the previous frame'))  # to previous frame
+
 root.mainloop()  # display window
