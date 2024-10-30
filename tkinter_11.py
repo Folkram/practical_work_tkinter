@@ -68,7 +68,33 @@ def to_result():  # switch to the result and change text
         frame_result.pack(fill='both', expand=1)
         frame_btn_result.pack(fill='both', side='bottom')
 
-        label_result['text'] = 'Result'  # change result text
+        label_result['text'] = get_result()  # change result text
+
+
+def get_result():  # get the result text
+    correct_answer = ['3', '3', '3']
+    user_answer = [fq_options.get(), sq_options.get(), tq_options.get()]
+
+    points = 0
+    for i in range(3):  # check the answers
+        if correct_answer[i] == user_answer[i]:
+            points += 1
+
+    if points == 0:
+        text_result = (f'You answered {points} of the 3 questions correctly. Your knowledge of penguins is very '
+                       f'mediocre. You would do well to learn more about them in your free time. If you care about '
+                       f'them, of course)')
+    elif points == 1:
+        text_result = (f"You answered {points} of the 3 questions correctly. You don't know much about penguins. "
+                       f"Or you're just lucky to choose the right option.")
+    elif points == 2:
+        text_result = (f'You answered {points} of the 3 questions correctly! Your knowledge of penguins is quite '
+                       f'extensive. You can be proud of yourself!')
+    else:
+        text_result = (f'You answered {points} of the 3 questions correctly! You answered all the questions '
+                       f'correctly! You know a lot about penguins. Or just Google it well)')
+
+    return text_result  # return result text
 
 
 # class section
