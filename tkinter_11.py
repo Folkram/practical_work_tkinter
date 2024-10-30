@@ -128,4 +128,20 @@ MyButton(btn_tq_frame, 'Show result >>', color2, color1, 0, color1, color2,  ('A
 MyButton(btn_tq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
          5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
 
+# result
+# frame section
+frame_result = tk.Frame(root, bg=color1)
+frame_btn_result = tk.Frame(root, bg=color1)
+
+# content
+# label section
+MyLabel(frame_result, 'Result', color1, color2, ('Arial', 28, 'bold'),
+        350, 'left', 0, (50, 25))  # title
+label_result = tk.Label(frame_result, bg=color1, fg=color2, font=('Arial', 16, 'italic'), wraplength=340,
+                        justify='left')  # result text
+label_result.pack(padx=5, pady=(0, 35))
+# button section
+MyButton(frame_btn_result, '<< Exit >>', color2, color1, 0, color1, color2,
+         ('Arial', 14), 5, (0, 5), lambda: root.destroy())
+
 root.mainloop()  # display window
