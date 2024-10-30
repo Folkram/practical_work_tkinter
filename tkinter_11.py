@@ -105,4 +105,27 @@ MyButton(btn_sq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 1
 MyButton(btn_sq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
          5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
 
+# third question
+# frame section
+third_question_frame = tk.Frame(root, bg=color1)
+btn_tq_frame = tk.Frame(root, bg=color1)
+
+# content
+# label section
+text_tq = 'In which hemisphere do penguins live?'
+MyLabel(third_question_frame, 'Question №3', color1, color2, ('Arial', 28, 'bold'),
+        350, 'left', 0, (50, 25))
+MyLabel(third_question_frame, text_tq, color1, color2, ('Arial', 16, 'italic'), 340,
+        'left',  5, (0, 35))
+# radiobutton section
+tq_options = tk.StringVar()  # common variable for third question
+tq_option_1 = MyRadiobutton(third_question_frame, 'North', tq_options, 1)
+tq_option_2 = MyRadiobutton(third_question_frame, 'Both', tq_options, 2)
+tq_option_3 = MyRadiobutton(third_question_frame, 'South', tq_options, 3)
+# button section
+MyButton(btn_tq_frame, 'Show result >>', color2, color1, 0, color1, color2,  ('Arial', 14),
+         5, 0, lambda: print('Show the result'))  # show the result
+MyButton(btn_tq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
+
 root.mainloop()  # display window
