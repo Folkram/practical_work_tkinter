@@ -53,5 +53,10 @@ MyLabel(greeting_frame, 'Welcome!', color1, color2, ('Arial', 28, 'bold'), 350,
         'center', 0, (75, 50))  # heading
 MyLabel(greeting_frame, text_of_greeting, color1, color2, ('Arial', 16, 'italic'), 340,
         'left',  5, 25)  # greeting
+# buttons
+MyButton(btn_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 0, lambda: print('go to the next frame'))  # to next frame
+MyButton(btn_frame, '<< Exit', color2, color1, 0, color1, color2, ('Arial', 14),
+         5, 5, lambda: root.destroy())  # close window
 
 root.mainloop()  # display window
