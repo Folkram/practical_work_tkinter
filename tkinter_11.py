@@ -1,5 +1,6 @@
 # import module
 import tkinter as tk
+from tkinter import messagebox as mb
 
 
 # function section
@@ -26,39 +27,48 @@ def to_fq():  # switch to the first question
 
 
 def to_sq():  # switch to the second question
-    # close first and third questions
-    first_question_frame.forget()
-    btn_fq_frame.forget()
-    third_question_frame.forget()
-    btn_tq_frame.forget()
+    if fq_options.get() == '':  # check
+        mb.showerror('Error!', 'None of the options are selected')
+    else:
+        # close first and third questions
+        first_question_frame.forget()
+        btn_fq_frame.forget()
+        third_question_frame.forget()
+        btn_tq_frame.forget()
 
-    # show the second question
-    second_question_frame.pack(fill='both', expand=1)
-    btn_sq_frame.pack(fill='both', side='bottom')
+        # show the second question
+        second_question_frame.pack(fill='both', expand=1)
+        btn_sq_frame.pack(fill='both', side='bottom')
 
 
 def to_tq():  # switch to the third question
-    # close second question and result
-    second_question_frame.forget()
-    btn_sq_frame.forget()
-    frame_result.forget()
-    frame_btn_result.forget()
+    if sq_options.get() == '':  # check
+        mb.showerror('Error!', 'None of the options are selected')
+    else:
+        # close second question and result
+        second_question_frame.forget()
+        btn_sq_frame.forget()
+        frame_result.forget()
+        frame_btn_result.forget()
 
-    # show the third question
-    third_question_frame.pack(fill='both', expand=1)
-    btn_tq_frame.pack(fill='both', side='bottom')
+        # show the third question
+        third_question_frame.pack(fill='both', expand=1)
+        btn_tq_frame.pack(fill='both', side='bottom')
 
 
 def to_result():  # switch to the result and change text
-    # close the third question
-    third_question_frame.forget()
-    btn_tq_frame.forget()
+    if tq_options.get() == '':  # check
+        mb.showerror('Error!', 'None of the options are selected')
+    else:
+        # close the third question
+        third_question_frame.forget()
+        btn_tq_frame.forget()
 
-    # show the result
-    frame_result.pack(fill='both', expand=1)
-    frame_btn_result.pack(fill='both', side='bottom')
+        # show the result
+        frame_result.pack(fill='both', expand=1)
+        frame_btn_result.pack(fill='both', side='bottom')
 
-    label_result['text'] = 'Result'  # change result text
+        label_result['text'] = 'Result'  # change result text
 
 
 # class section
