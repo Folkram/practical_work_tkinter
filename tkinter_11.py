@@ -2,6 +2,65 @@
 import tkinter as tk
 
 
+# function section
+def to_greeting():  # switch to greeting
+    # close the first question
+    first_question_frame.forget()
+    btn_fq_frame.forget()
+
+    # show greeting
+    greeting_frame.pack(fill='both', expand=1)
+    btn_frame.pack(fill='both', side='bottom')
+
+
+def to_fq():  # switch to the first question
+    # close greeting and second question
+    greeting_frame.forget()
+    btn_frame.forget()
+    second_question_frame.forget()
+    btn_sq_frame.forget()
+
+    # show the first question
+    first_question_frame.pack(fill='both', expand=1)
+    btn_fq_frame.pack(fill='both', side='bottom')
+
+
+def to_sq():  # switch to the second question
+    # close first and third questions
+    first_question_frame.forget()
+    btn_fq_frame.forget()
+    third_question_frame.forget()
+    btn_tq_frame.forget()
+
+    # show the second question
+    second_question_frame.pack(fill='both', expand=1)
+    btn_sq_frame.pack(fill='both', side='bottom')
+
+
+def to_tq():  # switch to the third question
+    # close second question and result
+    second_question_frame.forget()
+    btn_sq_frame.forget()
+    frame_result.forget()
+    frame_btn_result.forget()
+
+    # show the third question
+    third_question_frame.pack(fill='both', expand=1)
+    btn_tq_frame.pack(fill='both', side='bottom')
+
+
+def to_result():  # switch to the result and change text
+    # close the third question
+    third_question_frame.forget()
+    btn_tq_frame.forget()
+
+    # show the result
+    frame_result.pack(fill='both', expand=1)
+    frame_btn_result.pack(fill='both', side='bottom')
+
+    label_result['text'] = 'Result'  # change result text
+
+
 # class section
 class MyLabel:  # create label
     def __init__(self, m_root, m_text, m_bg, m_fg, m_font, m_wraplength, m_justify, m_padx, m_pady):
@@ -55,7 +114,7 @@ MyLabel(greeting_frame, text_of_greeting, color1, color2, ('Arial', 16, 'italic'
         'left',  5, 25)  # greeting
 # buttons
 MyButton(btn_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
-         5, 0, lambda: print('go to the next frame'))  # to next frame
+         5, 0, to_fq)  # to next frame
 MyButton(btn_frame, '<< Exit', color2, color1, 0, color1, color2, ('Arial', 14),
          5, 5, lambda: root.destroy())  # close window
 
@@ -78,9 +137,9 @@ fq_option_2 = MyRadiobutton(first_question_frame, '23', fq_options, 2)
 fq_option_3 = MyRadiobutton(first_question_frame, '17', fq_options, 3)
 # button section
 MyButton(btn_fq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
-                       5, 0, lambda: print('Go to the next frame'))  # to next frame
+                       5, 0, to_sq)  # to next frame
 MyButton(btn_fq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
-         5, 5, lambda: print('Go to the previous frame'))  # to previous frame
+         5, 5, to_greeting)  # to previous frame
 
 # second question
 # frame section
@@ -101,9 +160,9 @@ sq_option_2 = MyRadiobutton(second_question_frame, '60 million years ago', sq_op
 sq_option_3 = MyRadiobutton(second_question_frame, '30 million years ago', sq_options, 3)
 # button section
 MyButton(btn_sq_frame, 'Next >>', color2, color1, 0, color1, color2, ('Arial', 14),
-         5, 0, lambda: print('Go to the next frame'))  # to the next frame
+         5, 0, to_tq)  # to the next frame
 MyButton(btn_sq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
-         5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
+         5, 5, to_fq)  # to the previous frame
 
 # third question
 # frame section
@@ -124,9 +183,9 @@ tq_option_2 = MyRadiobutton(third_question_frame, 'Both', tq_options, 2)
 tq_option_3 = MyRadiobutton(third_question_frame, 'South', tq_options, 3)
 # button section
 MyButton(btn_tq_frame, 'Show result >>', color2, color1, 0, color1, color2,  ('Arial', 14),
-         5, 0, lambda: print('Show the result'))  # show the result
+         5, 0, to_result)  # show the result
 MyButton(btn_tq_frame, '<< Back', color2, color1, 0, color1, color2, ('Arial', 14),
-         5, 5, lambda: print('Go to the previous frame'))  # to the previous frame
+         5, 5, to_sq)  # to the previous frame
 
 # result
 # frame section
