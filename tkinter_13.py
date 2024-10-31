@@ -1,6 +1,7 @@
 # import module
 import tkinter as tk
 import random as rm
+from tkinter import filedialog as fd
 
 
 # functions section
@@ -73,6 +74,29 @@ def get_blue():
 
 def get_purple():
     color_name['text'] = 'Purple #8b00hh'
+
+
+# third task function
+def list_input():  # add entry to list
+    user_list.insert('end', user_input.get())
+    user_input.delete(0, 'end')
+
+
+def list_delete_select():  # delete selected rows
+    list_delete = list(user_list.curselection())
+    list_delete.sort(reverse=True)
+    for i in list_delete:
+        user_list.delete(i)
+
+
+def record_file():  # save list to file
+    file_name = fd.asksaveasfilename(filetypes=[('Text Files', '*.txt'), ('All Files', '*.*')], defaultextension='txt')
+    f = open(file_name, 'w')
+    s = ''
+    for i in user_list.get(0, 'end'):
+        s += f'{str(i)}\n'
+    f.write(s)
+    f.close()
 
 
 # root window
@@ -250,11 +274,11 @@ scroll.grid(column=2, row=1, sticky='nes')
 user_input = tk.Entry(third_task_frame, font=('Arial', 12))
 user_input.grid(column=1, columnspan=2, row=2,  sticky='news', padx=(10, 0), pady=(10, 0))
 
-btn_input = tk.Button(third_task_frame, text='Add to list', font=('Arial', 12))
+btn_input = tk.Button(third_task_frame, text='Add to list', font=('Arial', 12), command=list_input)
 btn_input.grid(column=1, columnspan=2, row=3,  sticky='news', padx=(10, 0))
-btn_delete = tk.Button(third_task_frame, text='Delete', font=('Arial', 12))
+btn_delete = tk.Button(third_task_frame, text='Delete', font=('Arial', 12), command=list_delete_select)
 btn_delete.grid(column=1, row=4,  sticky='news', padx=(10, 0))
-btn_save = tk.Button(third_task_frame, text='Save', font=('Arial', 12))
+btn_save = tk.Button(third_task_frame, text='Save', font=('Arial', 12), command=record_file)
 btn_save.grid(column=2, row=4,  sticky='news')
 
 root.mainloop()  # show window
