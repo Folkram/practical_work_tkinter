@@ -6,30 +6,43 @@ import random as rm
 # functions section
 # page switching functions
 def to_home():  # switch to home page
-    # close first_task and second_task
+    # close first_task, second_task and third_task
     first_task_frame.forget()
     second_task_frame.forget()
+    third_task_frame.forget()
 
     # open home_frame
     home_frame.pack(fill='both', expand=1)
 
 
 def to_first():  # switch to first task page
-    # close home_frame and second_task
+    # close home_frame, second_task and third_task
     home_frame.forget()
     second_task_frame.forget()
+    third_task_frame.forget()
 
     # open first_task
     first_task_frame.pack(fill='both', expand=1)
 
 
 def to_second():  # switch to second task page
-    # close home_frame and first_task
+    # close home_frame, first_task and third_task
     home_frame.forget()
     first_task_frame.forget()
+    third_task_frame.forget()
 
     # open second_task
     second_task_frame.pack(fill='both', expand=1)
+
+
+def to_third():  # switch to third task page
+    # close home_frame, first_task and second_task
+    home_frame.forget()
+    first_task_frame.forget()
+    second_task_frame.forget()
+
+    # open third_task
+    third_task_frame.pack(fill='both', expand=1)
 
 
 # task functions
@@ -91,7 +104,7 @@ tasks = tk.Menu(root, tearoff=0)
 main_menu.add_cascade(label='Tasks', menu=tasks)
 tasks.add_command(label='Task №1', command=to_first)
 tasks.add_command(label='Task №2', command=to_second)
-tasks.add_command(label='Task №3')
+tasks.add_command(label='Task №3', command=to_third)
 tasks.add_command(label='Task №4')
 tasks.add_command(label='Task №5')
 tasks.add_command(label='Task №6')
@@ -217,5 +230,31 @@ class GroupWidgets:  # create a constructor
 
 
 group_widgets = GroupWidgets(second_task_frame)  # use the constructor
+
+# task №3
+third_task_frame = tk.Frame(root)
+
+for column in range(4):
+    third_task_frame.columnconfigure(column, weight=round(800/4))
+
+third_task_title = tk.Label(third_task_frame, text='Task №3: List')
+third_task_title.config(font=('Arial', 18, 'bold'))
+third_task_title.grid(columnspan=4, row=0, pady=(10, 25), sticky='news')
+
+user_list = tk.Listbox(third_task_frame, selectmode='multiple', font=('Arial', 12))
+scroll = tk.Scrollbar(third_task_frame, orient='vertical', command=user_list.yview)
+user_list.config(yscrollcommand=scroll.set)
+user_list.grid(column=1, columnspan=2, row=1, sticky='news', padx=(10, 20))
+scroll.grid(column=2, row=1, sticky='nes')
+
+user_input = tk.Entry(third_task_frame, font=('Arial', 12))
+user_input.grid(column=1, columnspan=2, row=2,  sticky='news', padx=(10, 0), pady=(10, 0))
+
+btn_input = tk.Button(third_task_frame, text='Add to list', font=('Arial', 12))
+btn_input.grid(column=1, columnspan=2, row=3,  sticky='news', padx=(10, 0))
+btn_delete = tk.Button(third_task_frame, text='Delete', font=('Arial', 12))
+btn_delete.grid(column=1, row=4,  sticky='news', padx=(10, 0))
+btn_save = tk.Button(third_task_frame, text='Save', font=('Arial', 12))
+btn_save.grid(column=2, row=4,  sticky='news')
 
 root.mainloop()  # show window
