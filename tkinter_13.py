@@ -20,6 +20,36 @@ def to_first():  # switch to first task page
     first_task_frame.pack(fill='both', expand=1)
 
 
+# task functions
+# first task functions
+def get_red():
+    color_name['text'] = 'Red #ff0000'
+
+
+def get_orange():
+    color_name['text'] = 'Orange #ff8000'
+
+
+def get_yellow():
+    color_name['text'] = 'Yellow #ffff00'
+
+
+def get_green():
+    color_name['text'] = 'Green #00ff00'
+
+
+def get_cyan():
+    color_name['text'] = 'Cyan #00bfff'
+
+
+def get_blue():
+    color_name['text'] = 'Blue #0000ff'
+
+
+def get_purple():
+    color_name['text'] = 'Purple #8b00hh'
+
+
 # root window
 root = tk.Tk()
 root.title('Result')
@@ -88,13 +118,13 @@ first_task_title.grid(columnspan=7, row=0, pady=10, sticky='news')
 color_name.grid(columnspan=7, row=1, pady=(10, 20), sticky='news')
 
 # buttons
-btn_red = tk.Button(first_task_frame, width=10, height=4, bg='red')
-btn_orange = tk.Button(first_task_frame, width=10, height=4, bg='orange')
-btn_yellow = tk.Button(first_task_frame, width=10, height=4, bg='yellow')
-btn_green = tk.Button(first_task_frame, width=10, height=4, bg='green')
-btn_cyan = tk.Button(first_task_frame, width=10, height=4, bg='cyan')
-btn_blue = tk.Button(first_task_frame, width=10, height=4, bg='blue')
-btn_purple = tk.Button(first_task_frame, width=10, height=4, bg='purple')
+btn_red = tk.Button(first_task_frame, width=10, height=4, bg='red', command=get_red)
+btn_orange = tk.Button(first_task_frame, width=10, height=4, bg='orange', command=get_orange)
+btn_yellow = tk.Button(first_task_frame, width=10, height=4, bg='yellow', command=get_yellow)
+btn_green = tk.Button(first_task_frame, width=10, height=4, bg='green', command=get_green)
+btn_cyan = tk.Button(first_task_frame, width=10, height=4, bg='cyan', command=get_cyan)
+btn_blue = tk.Button(first_task_frame, width=10, height=4, bg='blue', command=get_blue)
+btn_purple = tk.Button(first_task_frame, width=10, height=4, bg='purple', command=get_purple)
 
 # buttons layout
 btn_red.grid(column=0, row=2)
