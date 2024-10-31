@@ -1,23 +1,35 @@
 # import module
 import tkinter as tk
+import random as rm
 
 
 # functions section
 # page switching functions
 def to_home():  # switch to home page
-    # close first_task
+    # close first_task and second_task
     first_task_frame.forget()
+    second_task_frame.forget()
 
     # open home_frame
     home_frame.pack(fill='both', expand=1)
 
 
 def to_first():  # switch to first task page
-    # close home_frame
+    # close home_frame and second_task
     home_frame.forget()
+    second_task_frame.forget()
 
     # open first_task
     first_task_frame.pack(fill='both', expand=1)
+
+
+def to_second():  # switch to second task page
+    # close home_frame and first_task
+    home_frame.forget()
+    first_task_frame.forget()
+
+    # open second_task
+    second_task_frame.pack(fill='both', expand=1)
 
 
 # task functions
@@ -78,7 +90,7 @@ main_menu.add_cascade(label='Settings', menu=options)
 tasks = tk.Menu(root, tearoff=0)
 main_menu.add_cascade(label='Tasks', menu=tasks)
 tasks.add_command(label='Task №1', command=to_first)
-tasks.add_command(label='Task №2',)
+tasks.add_command(label='Task №2', command=to_second)
 tasks.add_command(label='Task №3')
 tasks.add_command(label='Task №4')
 tasks.add_command(label='Task №5')
@@ -135,4 +147,75 @@ btn_cyan.grid(column=4, row=2)
 btn_blue.grid(column=5, row=2)
 btn_purple.grid(column=6, row=2)
 
-root.mainloop()
+# task №2
+# widgets section
+second_task_frame = tk.Frame(root)
+
+for column in range(4):  # set the size of the column and row
+    second_task_frame.columnconfigure(column, weight=round(800/4))
+
+second_task_title = tk.Label(second_task_frame, text='Task №2: Sorting')
+second_task_title.config(font=('Arial', 18, 'bold'))
+second_task_title.grid(columnspan=4, row=0, pady=10, sticky='news')
+
+
+class GroupWidgets:  # create a constructor
+    def __init__(self, m_root, m_font=('Arial', 10)):
+        # widgets section
+        self.entry = tk.Entry(m_root, font=m_font)
+        self.entry.grid(columnspan=4, row=1, padx=10, pady=(10, 5), sticky='news')
+        self.label = tk.Label(m_root, font=m_font, bg='black', fg='white', text='--')
+        self.label.grid(columnspan=4, row=2, padx=10, pady=5, sticky='news')
+        # buttons
+        self.btn_sort_abc = tk.Button(m_root, font=m_font, text='Ascending order', command=self.sort_abc)
+        self.btn_sort_abc.grid(column=0, row=3, padx=(10, 5), pady=5, sticky='news')
+        self.btn_sort_zyx = tk.Button(m_root, font=m_font, text='descending order', command=self.sort_zyx)
+        self.btn_sort_zyx.grid(column=1, row=3, padx=5, pady=5, sticky='news')
+        self.btn_sort_rn = tk.Button(m_root, font=m_font, text='Random order', command=self.sort_random)
+        self.btn_sort_rn.grid(column=2, row=3, padx=5, pady=5, sticky='news')
+        self.btn_clear = tk.Button(m_root, font=m_font, text='Clear', command=self.clear)
+        self.btn_clear.grid(column=3, row=3, padx=(5, 10), pady=5, sticky='news')
+
+    def get_entry(self):  # get the data in the entry field
+        return self.entry.get()
+
+    def sort_abc(self):  # sort in ascending order
+        text = list(self.get_entry())
+        total_text = []
+        for i in text:
+            if i != ' ':
+                total_text.append(i)
+        self.label['text'] = sorted(total_text)
+
+    def sort_zyx(self):  # sort in descending order
+        text = list(self.get_entry())
+        total_text = []
+        for i in text:
+            if i != ' ':
+                total_text.append(i)
+        self.label['text'] = sorted(total_text, reverse=True)
+
+    def sort_random(self):  # sort in random order
+        text = list(self.get_entry())
+        total_text = []
+        for i in text:
+            if i != ' ':
+                total_text.append(i)
+        self.label['text'] = ''
+
+        while len(total_text) != 0:
+            random_id = rm.randint(0, len(total_text)-1)
+            if len(total_text) == 1:
+                self.label['text'] += f'{total_text[random_id]}'
+            else:
+                self.label['text'] += f'{total_text[random_id]} '
+            total_text.pop(random_id)
+
+    def clear(self):  # clear all fields
+        self.entry.delete(0, 'end')
+        self.label['text'] = ''
+
+
+group_widgets = GroupWidgets(second_task_frame)  # use the constructor
+
+root.mainloop()  # show window
