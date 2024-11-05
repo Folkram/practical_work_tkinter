@@ -7,43 +7,58 @@ from tkinter import filedialog as fd
 # functions section
 # page switching functions
 def to_home():  # switch to home page
-    # close first_task, second_task and third_task
+    # close another frames
     first_task_frame.forget()
     second_task_frame.forget()
     third_task_frame.forget()
+    fourth_task_frame.forget()
 
     # open home_frame
     home_frame.pack(fill='both', expand=1)
 
 
 def to_first():  # switch to first task page
-    # close home_frame, second_task and third_task
+    # close another frames
     home_frame.forget()
     second_task_frame.forget()
     third_task_frame.forget()
+    fourth_task_frame.forget()
 
     # open first_task
     first_task_frame.pack(fill='both', expand=1)
 
 
 def to_second():  # switch to second task page
-    # close home_frame, first_task and third_task
+    # close another frames
     home_frame.forget()
     first_task_frame.forget()
     third_task_frame.forget()
+    fourth_task_frame.forget()
 
     # open second_task
     second_task_frame.pack(fill='both', expand=1)
 
 
 def to_third():  # switch to third task page
-    # close home_frame, first_task and second_task
+    # close another frames
     home_frame.forget()
     first_task_frame.forget()
     second_task_frame.forget()
+    fourth_task_frame.forget()
 
     # open third_task
     third_task_frame.pack(fill='both', expand=1)
+
+
+def to_fourth():  # switch to third task page
+    # close another frames
+    home_frame.forget()
+    first_task_frame.forget()
+    second_task_frame.forget()
+    third_task_frame.forget()
+
+    # open fourth_task
+    fourth_task_frame.pack(fill='both', expand=1)
 
 
 # task functions
@@ -129,7 +144,7 @@ main_menu.add_cascade(label='Tasks', menu=tasks)
 tasks.add_command(label='Task №1', command=to_first)
 tasks.add_command(label='Task №2', command=to_second)
 tasks.add_command(label='Task №3', command=to_third)
-tasks.add_command(label='Task №4')
+tasks.add_command(label='Task №4', command=to_fourth)
 tasks.add_command(label='Task №5')
 tasks.add_command(label='Task №6')
 
@@ -280,5 +295,53 @@ btn_delete = tk.Button(third_task_frame, text='Delete', font=('Arial', 12), comm
 btn_delete.grid(column=1, row=4,  sticky='news', padx=(10, 0))
 btn_save = tk.Button(third_task_frame, text='Save', font=('Arial', 12), command=record_file)
 btn_save.grid(column=2, row=4,  sticky='news')
+
+# task №4
+fourth_task_frame = tk.Frame(root)
+
+for column in range(4):
+    fourth_task_frame.columnconfigure(column, weight=round(800/4))
+
+label_fourth_task = tk.Label(fourth_task_frame, text='Task №4: Cart')
+label_fourth_task.config(font=('Arial', 18, 'bold'))
+label_fourth_task.grid(columnspan=4, row=0, pady=(10, 25), sticky='news')
+
+label_catalog = tk.Label(fourth_task_frame, text='Catalog', font=('Arial', 14, 'bold'), bg='#d7d7d7')
+label_catalog.grid(column=0, columnspan=2, row=1, padx=(10, 15), pady=(10, 5), sticky='news')
+
+label_cart = tk.Label(fourth_task_frame, text='Cart', font=('Arial', 14, 'bold'), bg='#d7d7d7')
+label_cart.grid(column=2, columnspan=2, row=1, padx=(10, 10), pady=(10, 5), sticky='news')
+
+# add items to catalog
+catalog = tk.Listbox(fourth_task_frame, font=('Arial', 12), selectmode='extended')
+catalog.insert(0, 'Drill')
+catalog.insert(1, 'Hammer')
+catalog.insert(3, 'Screwdriver')
+catalog.insert(4, 'Spoon')
+catalog.insert(5, 'Fork')
+catalog.insert(6, 'Chair')
+catalog.insert(7, 'Table')
+catalog.insert(8, 'Door')
+catalog.insert(9, 'Lock')
+catalog.insert(10, 'Pillow')
+catalog.insert(11, 'Blank')
+catalog.insert(12, 'Bed')
+
+scroll = tk.Scrollbar(fourth_task_frame, orient='vertical', command=catalog.yview)
+catalog.config(yscrollcommand=scroll.set)
+catalog.grid(column=0, columnspan=2, row=2, padx=(10, 10), sticky='news')
+scroll.grid(column=1, row=2, padx=(0, 10), sticky='nes')
+
+cart = tk.Listbox(fourth_task_frame, font=('Arial', 12))
+cart.grid(column=2, columnspan=2, row=2, padx=(10, 10), sticky='news')
+
+btn_add = tk.Button(fourth_task_frame, text='Add to cart', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_add.grid(column=0, columnspan=2, row=3, pady=(10, 0), padx=(10, 5), sticky='news')
+btn_delete_item = tk.Button(fourth_task_frame, text='Delete', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_delete_item.grid(column=2, columnspan=2, row=3, pady=(10, 0), padx=(5, 10), sticky='news')
+btn_delete_all = tk.Button(fourth_task_frame, text='Delete all', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_delete_all.grid(column=0, columnspan=2, row=4, padx=(10, 5), pady=(5, 0), sticky='news')
+btn_order = tk.Button(fourth_task_frame, text='Order', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_order.grid(column=2, columnspan=2, row=4, padx=(5, 10), pady=(5, 0), sticky='news')
 
 root.mainloop()  # show window
