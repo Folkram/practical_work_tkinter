@@ -15,3 +15,4 @@ list of works:
 12. tkinter_12.py - menu
 13. tkinter_13.py - tasks
 14. tkinter_14.py - use bind()
+15. tkinter_15.py - detect events
