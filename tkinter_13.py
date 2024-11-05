@@ -13,6 +13,7 @@ def to_home():  # switch to home page
     third_task_frame.forget()
     fourth_task_frame.forget()
     fifth_task_frame.forget()
+    sixth_task_frame.forget()
 
     # open home_frame
     home_frame.pack(fill='both', expand=1)
@@ -25,6 +26,7 @@ def to_first():  # switch to first task page
     third_task_frame.forget()
     fourth_task_frame.forget()
     fifth_task_frame.forget()
+    sixth_task_frame.forget()
 
     # open first_task
     first_task_frame.pack(fill='both', expand=1)
@@ -37,6 +39,7 @@ def to_second():  # switch to second task page
     third_task_frame.forget()
     fourth_task_frame.forget()
     fifth_task_frame.forget()
+    sixth_task_frame.forget()
 
     # open second_task
     second_task_frame.pack(fill='both', expand=1)
@@ -49,6 +52,7 @@ def to_third():  # switch to third task page
     second_task_frame.forget()
     fourth_task_frame.forget()
     fifth_task_frame.forget()
+    sixth_task_frame.forget()
 
     # open third_task
     third_task_frame.pack(fill='both', expand=1)
@@ -61,6 +65,7 @@ def to_fourth():  # switch to fourth task page
     second_task_frame.forget()
     third_task_frame.forget()
     fifth_task_frame.forget()
+    sixth_task_frame.forget()
 
     # open fourth_task
     fourth_task_frame.pack(fill='both', expand=1)
@@ -73,9 +78,23 @@ def to_fifth():
     second_task_frame.forget()
     third_task_frame.forget()
     fourth_task_frame.forget()
+    sixth_task_frame.forget()
 
-    # open fourth_task
+    # open fifth_task
     fifth_task_frame.pack(fill='both', expand=1)
+
+
+def to_sixth():
+    # close another frames
+    home_frame.forget()
+    first_task_frame.forget()
+    second_task_frame.forget()
+    third_task_frame.forget()
+    fourth_task_frame.forget()
+    fifth_task_frame.forget()
+
+    # open sixth_task
+    sixth_task_frame.pack(fill='both', expand=1)
 
 
 # task functions
@@ -234,7 +253,7 @@ tasks.add_command(label='Task №2', command=to_second)
 tasks.add_command(label='Task №3', command=to_third)
 tasks.add_command(label='Task №4', command=to_fourth)
 tasks.add_command(label='Task №5', command=to_fifth)
-tasks.add_command(label='Task №6')
+tasks.add_command(label='Task №6', command=to_sixth)
 
 # home page
 # widgets section
@@ -498,5 +517,24 @@ btn_clear = tk.Button(frame_btn_menu, text='Clear', command=clear_terminal)
 btn_clear.grid(column=1, row=0, sticky='news', padx=5)
 btn_close = tk.Button(frame_btn_menu, text='Exit', command=close)
 btn_close.grid(column=2, row=0, sticky='news', padx=(5, 10))
+
+# task №6
+sixth_task_frame = tk.Frame(root)
+
+for column in range(3):
+    sixth_task_frame.columnconfigure(column, weight=round(800/3))
+
+label_sixth_task = tk.Label(sixth_task_frame, text='Task №6: Working with files')
+label_sixth_task.config(font=('Arial', 18, 'bold'))
+label_sixth_task.grid(columnspan=3, row=0, pady=(10, 25), sticky='news')
+
+output_file = tk.Text(sixth_task_frame, width=100, height=20)
+output_file.grid(column=0, columnspan=3, row=1, sticky='news', padx=10, pady=(0, 10))
+btn_open_file = tk.Button(sixth_task_frame, text='Открыть файл')
+btn_open_file.grid(column=0, row=2, sticky='news', padx=(10, 5))
+btn_save_file = tk.Button(sixth_task_frame, text='Сохранить файл')
+btn_save_file.grid(column=1, row=2, sticky='news', padx=(5, 5))
+btn_clear_file = tk.Button(sixth_task_frame, text='Очистить')
+btn_clear_file.grid(column=2, row=2, sticky='news', padx=(5, 10))
 
 root.mainloop()  # show window
