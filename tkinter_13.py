@@ -114,6 +114,32 @@ def record_file():  # save list to file
     f.close()
 
 
+# fourth task function
+def add_item():
+    list_item_id = list(catalog.curselection())
+    for item_id in list_item_id:
+        cart.insert('end', catalog.get(item_id))
+
+
+def delete_item():
+    cart.delete(cart.curselection())
+
+
+def delete_all_item():
+    cart.delete(0, 'end')
+
+
+def make_order():
+    file_name = fd.asksaveasfilename(filetypes=[('Text Files', '*.txt')], defaultextension='txt')
+    file = open(file_name, 'w')
+    content = ''
+    items = list(cart.get(0, 'end'))
+    for item in set(items):
+        content += f'{item}: {items.count(item)}\n'
+    file.write(content)
+    file.close()
+
+
 # root window
 root = tk.Tk()
 root.title('Result')
@@ -335,13 +361,15 @@ scroll.grid(column=1, row=2, padx=(0, 10), sticky='nes')
 cart = tk.Listbox(fourth_task_frame, font=('Arial', 12))
 cart.grid(column=2, columnspan=2, row=2, padx=(10, 10), sticky='news')
 
-btn_add = tk.Button(fourth_task_frame, text='Add to cart', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_add = tk.Button(fourth_task_frame, text='Add to cart', font=('Arial', 12), bg='#d7d7d7', border=0, command=add_item)
 btn_add.grid(column=0, columnspan=2, row=3, pady=(10, 0), padx=(10, 5), sticky='news')
-btn_delete_item = tk.Button(fourth_task_frame, text='Delete', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_delete_item = tk.Button(fourth_task_frame, text='Delete', font=('Arial', 12), bg='#d7d7d7', border=0,
+                            command=delete_item)
 btn_delete_item.grid(column=2, columnspan=2, row=3, pady=(10, 0), padx=(5, 10), sticky='news')
-btn_delete_all = tk.Button(fourth_task_frame, text='Delete all', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_delete_all = tk.Button(fourth_task_frame, text='Delete all', font=('Arial', 12), bg='#d7d7d7', border=0,
+                           command=delete_all_item)
 btn_delete_all.grid(column=0, columnspan=2, row=4, padx=(10, 5), pady=(5, 0), sticky='news')
-btn_order = tk.Button(fourth_task_frame, text='Order', font=('Arial', 12), bg='#d7d7d7', border=0)
+btn_order = tk.Button(fourth_task_frame, text='Order', font=('Arial', 12), bg='#d7d7d7', border=0, command=make_order)
 btn_order.grid(column=2, columnspan=2, row=4, padx=(5, 10), pady=(5, 0), sticky='news')
 
 root.mainloop()  # show window
