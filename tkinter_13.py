@@ -2,6 +2,7 @@
 import tkinter as tk
 import random as rm
 from tkinter import filedialog as fd
+from tkinter import messagebox as mb
 
 
 # functions section
@@ -202,6 +203,37 @@ def work_array():
         else:
             output.insert('end', f'\n\nMinimum element: {6 * multiplier}')
     output.config(state='disabled')
+
+
+# sixth task function
+def open_file():
+    file_name = fd.askopenfilename()
+    if file_name == '':
+        mb.showerror('Ошибка!', 'Вы не выбрали файл!')
+    else:
+        file = open(file_name)
+        file_text = file.read()
+        output_file.insert('end', file_text)
+        file.close()
+
+
+def save_file():
+    file_name = fd.asksaveasfilename(filetypes=[('Text files', '*.txt')], defaultextension='.txt')
+    if file_name == '':
+        mb.showerror('Ошибка!', 'Вы не указали файл!')
+    else:
+        file = open(file_name, 'w')
+        text = output_file.get('1.0', 'end')
+        file.write(text)
+        file.close()
+
+
+def clear_output():
+    answer = mb.askyesno('Очистка текстового поля', 'Вы действительно хотите очистить поле?')
+    if answer:
+        output_file.delete(1.0, 'end')
+    else:
+        pass
 
 
 def clear_terminal():
@@ -530,11 +562,11 @@ label_sixth_task.grid(columnspan=3, row=0, pady=(10, 25), sticky='news')
 
 output_file = tk.Text(sixth_task_frame, width=100, height=20)
 output_file.grid(column=0, columnspan=3, row=1, sticky='news', padx=10, pady=(0, 10))
-btn_open_file = tk.Button(sixth_task_frame, text='Открыть файл')
+btn_open_file = tk.Button(sixth_task_frame, text='Open file', command=open_file)
 btn_open_file.grid(column=0, row=2, sticky='news', padx=(10, 5))
-btn_save_file = tk.Button(sixth_task_frame, text='Сохранить файл')
+btn_save_file = tk.Button(sixth_task_frame, text='Save file', command=save_file)
 btn_save_file.grid(column=1, row=2, sticky='news', padx=(5, 5))
-btn_clear_file = tk.Button(sixth_task_frame, text='Очистить')
+btn_clear_file = tk.Button(sixth_task_frame, text='Clear', command=clear_output)
 btn_clear_file.grid(column=2, row=2, sticky='news', padx=(5, 10))
 
 root.mainloop()  # show window
