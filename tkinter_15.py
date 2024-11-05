@@ -1,6 +1,13 @@
 # import module
 import tkinter as tk
 
+
+# function section
+def show_pressed(event, button, color):  # change label text
+    event_label['text'] = f'Detect {button}'  # event name
+    event_label['fg'] = color  # font color
+
+
 # root window
 root = tk.Tk()
 root.title('Events')
