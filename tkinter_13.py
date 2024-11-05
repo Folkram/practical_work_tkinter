@@ -157,6 +157,51 @@ def make_order():
     file.close()
 
 
+# fifth task function
+def work_array():
+    multiplier = multipliers.get()
+    output.config(state='normal')
+    output.delete(8.0, 'end')
+    output.insert('end', f'\n\nModified array\nElement №1: {1*multiplier}\nElement №2: '
+                         f'{2*multiplier}\nElement №3: {3*multiplier}\nElement №4: {4*multiplier}\nElement №5: '
+                         f'{5*multiplier}\nElement №6: {6*multiplier}')
+    if option_amount.get() == 1:
+        output.insert('end', f'\n\nSum of all elements: {(1+2+3+4+5+6)*multiplier}')
+    if option_composition.get() == 1:
+        if option_amount.get() == 1:
+            output.insert('end', f'\nProduct of all elements: {(1*2*3*4*5*6)*multiplier}')
+        else:
+            output.insert('end', f'\n\nProduct of all elements: {(1 * 2 * 3 * 4 * 5 * 6) * multiplier}')
+    if option_min.get() == 1:
+        if option_amount.get() == 1 or option_composition.get() == 1:
+            output.insert('end', f'\nMinimum element: {1*multiplier}')
+        else:
+            output.insert('end', f'\n\nMaximum element: {1 * multiplier}')
+    if option_max.get() == 1:
+        if option_amount.get() == 1 or option_composition.get() == 1 or option_min.get() == 1:
+            output.insert('end', f'\nMaximum element: {6*multiplier}')
+        else:
+            output.insert('end', f'\n\nMinimum element: {6 * multiplier}')
+    output.config(state='disabled')
+
+
+def clear_terminal():
+    output.config(state='normal')
+    output.delete(9.0, 'end')
+    output.config(state='disabled')
+
+    multiplier_2.select()
+
+    check_amount.deselect()
+    check_composition.deselect()
+    check_min.deselect()
+    check_max.deselect()
+
+
+def close():
+    to_home()
+
+
 # root window
 root = tk.Tk()
 root.title('Result')
@@ -447,11 +492,11 @@ frame_btn_menu = tk.Frame(fifth_task_frame)
 frame_btn_menu.grid(column=0, columnspan=2, row=7, sticky='news', pady=(10, 0))
 for column in range(3):
     frame_btn_menu.columnconfigure(column, weight=round(((800/15)*2)/3))
-btn_execute = tk.Button(frame_btn_menu, text='Execute')
+btn_execute = tk.Button(frame_btn_menu, text='Execute', command=work_array)
 btn_execute.grid(column=0, row=0, sticky='news', padx=(10, 5))
-btn_clear = tk.Button(frame_btn_menu, text='Clear')
+btn_clear = tk.Button(frame_btn_menu, text='Clear', command=clear_terminal)
 btn_clear.grid(column=1, row=0, sticky='news', padx=5)
-btn_close = tk.Button(frame_btn_menu, text='Exit')
+btn_close = tk.Button(frame_btn_menu, text='Exit', command=close)
 btn_close.grid(column=2, row=0, sticky='news', padx=(5, 10))
 
 root.mainloop()  # show window
