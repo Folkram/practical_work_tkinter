@@ -229,7 +229,7 @@ def work_array():
 def open_file():
     file_name = fd.askopenfilename()
     if file_name == '':
-        mb.showerror('Ошибка!', 'Вы не выбрали файл!')
+        mb.showerror('Error!', 'You have not selected a file!')
     else:
         file = open(file_name)
         file_text = file.read()
@@ -240,7 +240,7 @@ def open_file():
 def save_file():
     file_name = fd.asksaveasfilename(filetypes=[('Text files', '*.txt')], defaultextension='.txt')
     if file_name == '':
-        mb.showerror('Ошибка!', 'Вы не указали файл!')
+        mb.showerror('Error!', "You didn't specify the file!")
     else:
         file = open(file_name, 'w')
         text = output_file.get('1.0', 'end')
@@ -249,7 +249,7 @@ def save_file():
 
 
 def clear_output():
-    answer = mb.askyesno('Очистка текстового поля', 'Вы действительно хотите очистить поле?')
+    answer = mb.askyesno('Clearing the text field', 'Do you really want to clear the field?')
     if answer:
         output_file.delete(1.0, 'end')
     else:
