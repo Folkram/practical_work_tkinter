@@ -6,6 +6,26 @@ from tkinter import messagebox as mb
 
 
 # functions section
+# setting function
+def get_fullscreen():
+    global fullscreen
+    root.geometry('+0+0')
+    fullscreen = not fullscreen
+    root.overrideredirect(fullscreen)
+
+
+def get_800x600():
+    root.geometry('800x600+0+0')
+
+
+def get_1280x720():
+    root.geometry('1280x720+0+0')
+
+
+def get_1920x1080():
+    root.geometry('1920x1080+0+0')
+
+
 # page switching functions
 def to_home():  # switch to home page
     # close another frames
@@ -268,11 +288,11 @@ main_menu.add_command(label='Home', command=to_home)  # go to home page
 # settings
 options = tk.Menu(root, tearoff=0)
 resolution = tk.Menu(root, tearoff=0)
-resolution.add_command(label='800x600')
-resolution.add_command(label='1280x720')
-resolution.add_command(label='1920x1080')
-options.add_cascade(label='Change resolution')
-options.add_command(label='Fullscreen')
+resolution.add_command(label='800x600', command=get_800x600)
+resolution.add_command(label='1280x720', command=get_1280x720)
+resolution.add_command(label='1920x1080', command=get_1920x1080)
+options.add_cascade(label='Change resolution', menu=resolution)
+options.add_command(label='Fullscreen', command=get_fullscreen)
 options.add_separator()
 options.add_command(label='Exit', command=lambda: root.destroy())
 main_menu.add_cascade(label='Settings', menu=options)
