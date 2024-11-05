@@ -12,6 +12,7 @@ def to_home():  # switch to home page
     second_task_frame.forget()
     third_task_frame.forget()
     fourth_task_frame.forget()
+    fifth_task_frame.forget()
 
     # open home_frame
     home_frame.pack(fill='both', expand=1)
@@ -23,6 +24,7 @@ def to_first():  # switch to first task page
     second_task_frame.forget()
     third_task_frame.forget()
     fourth_task_frame.forget()
+    fifth_task_frame.forget()
 
     # open first_task
     first_task_frame.pack(fill='both', expand=1)
@@ -34,6 +36,7 @@ def to_second():  # switch to second task page
     first_task_frame.forget()
     third_task_frame.forget()
     fourth_task_frame.forget()
+    fifth_task_frame.forget()
 
     # open second_task
     second_task_frame.pack(fill='both', expand=1)
@@ -45,20 +48,34 @@ def to_third():  # switch to third task page
     first_task_frame.forget()
     second_task_frame.forget()
     fourth_task_frame.forget()
+    fifth_task_frame.forget()
 
     # open third_task
     third_task_frame.pack(fill='both', expand=1)
 
 
-def to_fourth():  # switch to third task page
+def to_fourth():  # switch to fourth task page
     # close another frames
     home_frame.forget()
     first_task_frame.forget()
     second_task_frame.forget()
     third_task_frame.forget()
+    fifth_task_frame.forget()
 
     # open fourth_task
     fourth_task_frame.pack(fill='both', expand=1)
+
+
+def to_fifth():
+    # close another frames
+    home_frame.forget()
+    first_task_frame.forget()
+    second_task_frame.forget()
+    third_task_frame.forget()
+    fourth_task_frame.forget()
+
+    # open fourth_task
+    fifth_task_frame.pack(fill='both', expand=1)
 
 
 # task functions
@@ -171,7 +188,7 @@ tasks.add_command(label='Task №1', command=to_first)
 tasks.add_command(label='Task №2', command=to_second)
 tasks.add_command(label='Task №3', command=to_third)
 tasks.add_command(label='Task №4', command=to_fourth)
-tasks.add_command(label='Task №5')
+tasks.add_command(label='Task №5', command=to_fifth)
 tasks.add_command(label='Task №6')
 
 # home page
@@ -371,5 +388,70 @@ btn_delete_all = tk.Button(fourth_task_frame, text='Delete all', font=('Arial', 
 btn_delete_all.grid(column=0, columnspan=2, row=4, padx=(10, 5), pady=(5, 0), sticky='news')
 btn_order = tk.Button(fourth_task_frame, text='Order', font=('Arial', 12), bg='#d7d7d7', border=0, command=make_order)
 btn_order.grid(column=2, columnspan=2, row=4, padx=(5, 10), pady=(5, 0), sticky='news')
+
+# task №5
+fifth_task_frame = tk.Frame(root)
+
+for column in range(8):
+    fifth_task_frame.columnconfigure(column, weight=round(800/8))
+
+label_fifth_task = tk.Label(fifth_task_frame, text='Task №5: Working with an array of numbers')
+label_fifth_task.config(font=('Arial', 18, 'bold'))
+label_fifth_task.grid(columnspan=8, row=0, pady=(10, 25), sticky='news')
+
+label_multiplier = tk.Label(fifth_task_frame, text='Select multiplier', font=('Arial', 10, 'bold'))
+label_multiplier.grid(column=0, row=1, sticky='news')
+
+multipliers = tk.IntVar()
+multiplier_2 = tk.Radiobutton(fifth_task_frame, text='x2', value=2, variable=multipliers)
+multiplier_2.grid(column=0, row=2, sticky='news')
+multiplier_3 = tk.Radiobutton(fifth_task_frame, text='x3', value=3, variable=multipliers)
+multiplier_3.grid(column=0, row=3, sticky='news')
+multiplier_4 = tk.Radiobutton(fifth_task_frame, text='x4', value=4, variable=multipliers)
+multiplier_4.grid(column=0, row=4, sticky='news')
+multiplier_5 = tk.Radiobutton(fifth_task_frame, text='x5', value=5, variable=multipliers)
+multiplier_5.grid(column=0, row=5, sticky='news')
+
+multiplier_2.select()
+
+label_multiplier = tk.Label(fifth_task_frame, text='Output settings', font=('Arial', 10, 'bold'))
+label_multiplier.grid(column=1, row=1, sticky='nws')
+
+option_amount = tk.IntVar()
+option_composition = tk.IntVar()
+option_min = tk.IntVar()
+option_max = tk.IntVar()
+
+check_amount = tk.Checkbutton(fifth_task_frame, text='Display amount', onvalue=1, offvalue=0, variable=option_amount)
+check_amount.grid(column=1, row=2, sticky='nws')
+check_composition = tk.Checkbutton(fifth_task_frame, text='Display composition', onvalue=1, offvalue=0,
+                                   variable=option_composition)
+check_composition.grid(column=1, row=3, sticky='nws')
+check_min = tk.Checkbutton(fifth_task_frame, text='Minimum element', onvalue=1, offvalue=0,  variable=option_min)
+check_min.grid(column=1, row=4, sticky='nws')
+check_max = tk.Checkbutton(fifth_task_frame, text='Maximum element', onvalue=1, offvalue=0,  variable=option_max)
+check_max.grid(column=1, row=5, sticky='nws')
+
+label_multiplier = tk.Label(fifth_task_frame, text='Terminal', font=('Arial', 10, 'bold'))
+label_multiplier.grid(column=2, columnspan=6, row=1, sticky='nws')
+
+output = tk.Text(fifth_task_frame, bg='white', wrap='word', height=10, width=50)
+scroll = tk.Scrollbar(fifth_task_frame, orient='vertical', command=output.yview)
+output.insert('end', 'Initial array\nElement №1: 1\nElement №2: 2\nElement №3: 3\nElement №4: 4\n'
+                     'Element №5: 5\nElement №6: 6\n')
+output.config(state='disabled', yscrollcommand=scroll.set)
+output.grid(column=2, columnspan=6, row=2, rowspan=6, sticky='news', padx=(0, 10))
+scroll.grid(column=7, row=2, rowspan=6, sticky='nes', padx=(0, 10))
+
+frame_btn_menu = tk.Frame(fifth_task_frame)
+frame_btn_menu.grid(column=0, columnspan=2, row=7, sticky='news', pady=(10, 0))
+for column in range(3):
+    frame_btn_menu.columnconfigure(column, weight=round(((800/15)*2)/3))
+btn_execute = tk.Button(frame_btn_menu, text='Execute')
+btn_execute.grid(column=0, row=0, sticky='news', padx=(10, 5))
+btn_clear = tk.Button(frame_btn_menu, text='Clear')
+btn_clear.grid(column=1, row=0, sticky='news', padx=5)
+btn_close = tk.Button(frame_btn_menu, text='Exit')
+btn_close.grid(column=2, row=0, sticky='news', padx=(5, 10))
 
 root.mainloop()  # show window
