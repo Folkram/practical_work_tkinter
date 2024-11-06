@@ -5,8 +5,9 @@ import tkinter as tk
 # function section
 def aim(event):
     field.delete('aim')
-    field.create_line(event.x, event.y+15, event.x, event.y-15, width=5, fill='black', tags='aim')
-    field.create_line(event.x-15, event.y, event.x+15, event.y, width=5, fill='black', tags='aim')
+    field.create_rectangle(event.x-5, event.y+5, event.x+5, event.y-5, width=0, tags='aim')  # hitbox
+    field.create_line(event.x, event.y+15, event.x, event.y-15, width=5, fill='black', tags='aim')  # horizontal line
+    field.create_line(event.x-15, event.y, event.x+15, event.y, width=5, fill='black', tags='aim')  # vertical line
 
 
 def shoot(event):  # shooting at tank
@@ -19,8 +20,11 @@ def shoot(event):  # shooting at tank
     # aim's coordination
     aim_x1 = field.coords('aim')[0]
     aim_y1 = field.coords('aim')[1]
+    aim_x2 = field.coords('aim')[2]
+    aim_y2 = field.coords('aim')[3]
 
-    if tank_x1 < aim_x1 < tank_x2 and tank_y1 < aim_y1 < tank_y2:  # if tank's and aim's coordination match
+    if ((tank_x1 < aim_x1 < tank_x2 and tank_y1 < aim_y1 < tank_y2) or
+            (tank_x1 < aim_x2 < tank_x2 and tank_y1 < aim_y2 < tank_y2)):  # if tank's and aim's coordination match
         text = field.create_text(aim_x1 + 10, aim_y1 - 15, text='BOOM', font=('Fixedsys', 17), fill='orange')
         root.after(100, lambda e: field.delete('tank'), field)  # delete tank
         root.after(500, lambda e: field.delete(text), field)  # display text 'BOOM' for 5 second
