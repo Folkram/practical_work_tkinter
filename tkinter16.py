@@ -8,7 +8,7 @@ root.geometry('400x500')
 root.resizable(False, False)
 
 # widget section
-canvas = tk.Canvas(root)
+canvas = tk.Canvas(root, border=0, highlightthickness=0)
 canvas.config(bg='black', width=400, height=500)
 canvas.pack()
 
