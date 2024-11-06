@@ -9,6 +9,26 @@ def aim(event):
     field.create_line(event.x-15, event.y, event.x+15, event.y, width=5, fill='black', tags='aim')
 
 
+def shoot(event):  # shooting at tank
+    # tank's coordination
+    tank_x1 = field.coords('tank')[0]
+    tank_y1 = field.coords('tank')[1]
+    tank_x2 = field.coords('tank')[2]
+    tank_y2 = field.coords('tank')[3]
+
+    # aim's coordination
+    aim_x1 = field.coords('aim')[0]
+    aim_y1 = field.coords('aim')[1]
+
+    if tank_x1 < aim_x1 < tank_x2 and tank_y1 < aim_y1 < tank_y2:  # if tank's and aim's coordination match
+        text = field.create_text(aim_x1 + 10, aim_y1 - 15, text='BOOM', font=('Fixedsys', 17), fill='orange')
+        root.after(100, lambda e: field.delete('tank'), field)  # delete tank
+        root.after(500, lambda e: field.delete(text), field)  # display text 'BOOM' for 5 second
+    else:  # if tank's and aim's coordination don't match
+        text = field.create_text(aim_x1 + 10, aim_y1 - 15, text='miss', font=('Fixedsys', 17))
+        root.after(300, lambda e: field.delete(text), field)  # display text 'miss' for 3 second
+
+
 # root window
 root = tk.Tk()
 root.title('Tanks')
@@ -33,5 +53,7 @@ field.bind('<Right>', lambda e: field.move('tank', 10, 0))
 
 # aim
 field.bind('<Motion>', aim)
+
+field.tag_bind('aim', '<Button-1>', shoot)  # shooting function
 
 root.mainloop()  # display window
