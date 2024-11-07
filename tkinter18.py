@@ -15,7 +15,7 @@ def movement():  # movement of figure in straight line
 root = tk.Tk()
 root.title('Animation')
 root_width = root.winfo_screenwidth()  # window width
-root_height = root.winfo_screenwidth()  # window height
+root_height = root.winfo_screenheight()  # window height
 root.geometry(f'{root_width}x{root_height}')
 root.attributes("-fullscreen", True)  # fullscreen
 
