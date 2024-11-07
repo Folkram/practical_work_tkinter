@@ -18,3 +18,4 @@ list of works:
 15. tkinter15.py - detect events
 16. tkinter16.py - face
 17. tkinter17.py - tank
+18. tkinter18.py - simple animation
