@@ -1,6 +1,16 @@
 # import module
 import tkinter as tk
 
+
+# function section
+def movement():  # movement of figure in straight line
+    can.move('figure', 5, 0)
+    if can.coords('figure')[2] < root_width:
+        root.after(10, movement)
+    else:  # if shape reaches border of window
+        can.delete('figure')  # delete figure
+
+
 # root window
 root = tk.Tk()
 root.title('Animation')
