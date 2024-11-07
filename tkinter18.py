@@ -29,6 +29,7 @@ fig_width = root_width/9
 fig_height = root_width/12
 
 # parts (figure consists of six parts)
+can.create_rectangle(0, 0, fig_width, fig_height, width=0, tags='figure')  # hitbox
 can.create_rectangle(0, 0, fig_width/6, fig_height, width=0, fill='lime', tags='figure')  # part 1
 can.create_rectangle(fig_width/6, 0, fig_width*2/6, fig_height, width=0, fill='yellow', tags='figure')  # part 2
 can.create_rectangle(fig_width*2/6, 0, fig_width*3/6, fig_height, width=0, fill='red', tags='figure')  # part 3
