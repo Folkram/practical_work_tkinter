@@ -3,12 +3,18 @@ import tkinter as tk
 
 
 # function section
-def movement():  # movement of figure in straight line
-    can.move('figure', 5, 0)
-    if can.coords('figure')[2] < root_width:
+def movement():  # the movement of the figure in right, down and left
+    if can.coords('figure')[0] > 10 and can.coords('figure')[3] == root_height:  # movement in left
+        can.move('figure', -5, 0)
         root.after(10, movement)
-    else:  # if shape reaches border of window
-        can.delete('figure')  # delete figure
+
+    elif can.coords('figure')[2] < root_width:  # movement in right
+        can.move('figure', 5, 0)
+        root.after(10, movement)
+
+    elif can.coords('figure')[3] < root_height:  # movement in down
+        can.move('figure', 0, 5)
+        root.after(10, movement)
 
 
 # root window
@@ -37,4 +43,5 @@ can.create_rectangle(fig_width*3/6, 0, fig_width*4/6, fig_height, width=0, fill=
 can.create_rectangle(fig_width*4/6, 0, fig_width*5/6, fig_height, width=0, fill='purple', tags='figure')  # part 5
 can.create_rectangle(fig_width*5/6, 0, fig_width, fig_height, width=0, fill='pink', tags='figure')  # part 6
 
+movement()  # start moving
 root.mainloop()  # display window
