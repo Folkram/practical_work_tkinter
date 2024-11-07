@@ -9,4 +9,8 @@ root_height = root.winfo_screenwidth()  # window height
 root.geometry(f'{root_width}x{root_height}')
 root.attributes("-fullscreen", True)  # fullscreen
 
+# widget section
+can = tk.Canvas(root, bg='black', border=0, highlightthickness=0, width=root_width, height=root_height)
+can.pack()
+
 root.mainloop()  # display window
