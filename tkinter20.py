@@ -1,5 +1,6 @@
 # import module
 import tkinter as tk
+from PIL import ImageTk, Image
 
 # root window
 root = tk.Tk()
@@ -69,5 +70,9 @@ enemy_btn.grid(column=0, row=3, sticky='NEWS', padx=10, pady=(5, 5))
 checks_btn.grid(column=0, row=4, sticky='NEWS', padx=10, pady=(5, 5))
 options_btn.grid(column=0, row=5, sticky='NEWS', padx=10, pady=(5, 5))
 close_btn.grid(column=0, row=6, sticky='NEWS', padx=10, pady=(5, 10))
+
+img = ImageTk.PhotoImage(Image.open("logo.png"))
+panel = tk.Label(main_frame, image=img, bg='black')
+panel.grid(column=0, row=7, rowspan=3, sticky='NEWS', padx=(0, 10))
 
 root.mainloop()  # display window
