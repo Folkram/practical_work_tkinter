@@ -7,7 +7,7 @@ root = tk.Tk()
 root_wight = root.winfo_screenwidth()  # width user screen
 root_height = root.winfo_screenheight()  # height user screen
 root.geometry(f'{root_wight}x{root_height}')
-root.resizable(False, False)
+root.attributes('-fullscreen', True)  # fullscreen mode
 root.title('TERMINAL')
 root.config(bg='black')
 main_color = '#64da3d'
