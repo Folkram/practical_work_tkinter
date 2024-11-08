@@ -1,20 +1,19 @@
 # import module
 import tkinter as tk
+from PIL import ImageTk, Image
 
 # root window
 root = tk.Tk()
+img = ImageTk.PhotoImage(Image.open('boykisser.png'))  # img for label
+root_width = img.width()  # img width
+root_height = img.height()  # img height
 root.title('Gallery')
-root.geometry('800x600')
+root.geometry(f'{root_width}x{root_height}')
 root.config(bg='#0d0d0d')
 
 # widget section
-# canvas
-can = tk.Canvas(root, bg='#2b2b2b',  border=0, highlightthickness=0, width=800, height=550)
-can.pack()
-
-# button
-open_btn = tk.Button(root, text='Open Photo', bg='#2b2b2b', font=('Arial', 17), bd=0, fg='#c9c9c9',
-                     activebackground='#0d0d0d', activeforeground='#2b2b2b')
-open_btn.pack(fill='both', expand=1, padx=5, pady=5)
+# label
+label = tk.Label(root, image=img)
+label.pack()
 
 root.mainloop()  # display window
