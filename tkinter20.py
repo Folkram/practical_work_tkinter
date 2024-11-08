@@ -32,4 +32,42 @@ for i in range(6):
 for i in range(10):
     main_frame.rowconfigure(i, minsize=round((root_height - 100) / 10))
 
+# data display terminal
+terminal = tk.Frame(main_frame, bg='black')
+terminal.grid(column=1, columnspan=5, rowspan=10, sticky='NEWS', pady=10)
+
+# buttons for sidebar
+simulation_btn = tk.Button(main_frame, text='SIMULATION')  # go to the simulation section
+fight_btn = tk.Button(main_frame, text='TYPE OF BATTLE')  # go to choosing the type of battle
+weapon_btn = tk.Button(main_frame, text='WEAPON')  # go to choosing the weapon
+enemy_btn = tk.Button(main_frame, text='ENEMY')  # go to choosing the enemy
+checks_btn = tk.Button(main_frame, text='CHECKS')  # go to the checks section
+options_btn = tk.Button(main_frame, text='SETTING')  # go to the setting
+close_btn = tk.Button(main_frame, text='EXIT', command=lambda: root.destroy())  # close window
+
+# buttons style
+simulation_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                      activeforeground='black')
+fight_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                 activeforeground='black')
+weapon_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                  activeforeground='black')
+enemy_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                 activeforeground='black')
+checks_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                  activeforeground='black')
+options_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                   activeforeground='black')
+close_btn.config(bg='black', fg=main_color, font=('Fallout Regular', 35), border=0, activebackground=main_color,
+                 activeforeground='black')
+
+# button layout
+simulation_btn.grid(column=0, row=0, sticky='NEWS', padx=10, pady=(10, 5))
+fight_btn.grid(column=0, row=1, sticky='NEWS', padx=10, pady=(5, 5))
+weapon_btn.grid(column=0, row=2, sticky='NEWS', padx=10, pady=(5, 5))
+enemy_btn.grid(column=0, row=3, sticky='NEWS', padx=10, pady=(5, 5))
+checks_btn.grid(column=0, row=4, sticky='NEWS', padx=10, pady=(5, 5))
+options_btn.grid(column=0, row=5, sticky='NEWS', padx=10, pady=(5, 5))
+close_btn.grid(column=0, row=6, sticky='NEWS', padx=10, pady=(5, 10))
+
 root.mainloop()  # display window
