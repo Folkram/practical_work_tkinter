@@ -22,6 +22,12 @@ def delete():
     os.rmdir(os.path.join('x:/', dir_list.get(dir_list.curselection())))
 
 
+def update():
+    dir_list.delete(0, 'end')
+    for j in get_directory_list('x:/'):
+        dir_list.insert('end', j)
+
+
 # root window
 root = tk.Tk()
 root.geometry('800x500')
@@ -55,7 +61,7 @@ delete_btn = tk.Button(root, text='Delete', font=('Arial', 14), border=0, bg='#2
 copy_btn = tk.Button(root, text='Copy', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
                      activebackground='#404040')
 update_btn = tk.Button(root, text='Update', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
-                       activebackground='#404040')
+                       activebackground='#404040', command=update)
 
 # bind function
 dir_list.bind('<Double-Button-1>', display_content)
