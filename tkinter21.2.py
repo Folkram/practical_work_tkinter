@@ -2,6 +2,16 @@
 import tkinter as tk
 import os
 
+
+# function section
+def get_directory_list(directory):
+    directories = []
+    for name in os.listdir(directory):
+        if os.path.isdir(os.path.join(directory, name)):
+            directories.append(name)
+    return directories
+
+
 # root window
 root = tk.Tk()
 root.geometry('800x500')
@@ -22,6 +32,10 @@ dir_list = tk.Listbox(root, height=23, font=('Arial', 12), border=0, bg='#404040
                       selectbackground='#242424', activestyle='none')
 content_list = tk.Listbox(root, height=23, font=('Arial', 12), border=0, bg='#404040', highlightthickness=0,
                           fg='#d1d1d1', selectbackground='#242424', activestyle='none')
+
+# insert values
+for i in get_directory_list('x:/'):
+    dir_list.insert('end', i)
 
 # button section
 open_btn = tk.Button(root, text='Open', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
