@@ -4,7 +4,7 @@ from PIL import ImageTk, Image
 
 # root window
 root = tk.Tk()
-img = ImageTk.PhotoImage(Image.open('boykisser.png'))  # img for label
+img = ImageTk.PhotoImage(Image.open('img/boykisser.png'))  # img for label
 root_width = img.width()  # img width
 root_height = img.height()  # img height
 root.title('Gallery')
