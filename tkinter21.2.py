@@ -12,6 +12,12 @@ def get_directory_list(directory):
     return directories
 
 
+def display_content(event):
+    content_list.delete(0, 'end')
+    for con in os.listdir(os.path.join('x:/', dir_list.get(dir_list.curselection()))):
+        content_list.insert('end', con)
+
+
 # root window
 root = tk.Tk()
 root.geometry('800x500')
@@ -46,6 +52,10 @@ delete_btn = tk.Button(root, text='Delete', font=('Arial', 14), border=0, bg='#2
                        activebackground='#404040')
 copy_btn = tk.Button(root, text='Copy', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
                      activebackground='#404040')
+
+# bind function
+dir_list.bind('<Double-Button-1>', display_content)
+open_btn.bind('<Button-1>', display_content)
 
 # widget layout
 dir_title.grid(columnspan=2, row=0, sticky='news')
