@@ -18,6 +18,10 @@ def display_content(event):
         content_list.insert('end', con)
 
 
+def delete():
+    os.rmdir(os.path.join('x:/', dir_list.get(dir_list.curselection())))
+
+
 # root window
 root = tk.Tk()
 root.geometry('800x500')
