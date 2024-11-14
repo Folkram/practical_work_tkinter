@@ -1,6 +1,15 @@
 # import module
 import tkinter as tk
 
+
+# function section
+def set_size(event):  # set size for text field
+    if ent1.get() == '' or ent2.get() == '':
+        pass
+    else:
+        text.config(width=int(ent1.get()), height=int(ent2.get()))
+
+
 # root window
 root = tk.Tk()
 root.geometry('800x600')
@@ -14,6 +23,10 @@ ent1 = tk.Entry(root, width=4, font=('Arial', 12))
 ent2 = tk.Entry(root, width=4, font=('Arial', 12))
 btn = tk.Button(root, text='Set', font=('Arial', 12))
 text = tk.Text(root)
+
+# bind function
+root.bind('<Return>', set_size)
+btn.bind('<Button-1>', set_size)
 
 # set columns size
 for column in range(10):
