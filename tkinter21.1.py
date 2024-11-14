@@ -22,7 +22,7 @@ height_label = tk.Label(root, text='Height', font=('Arial', 12))
 ent1 = tk.Entry(root, width=4, font=('Arial', 12))
 ent2 = tk.Entry(root, width=4, font=('Arial', 12))
 btn = tk.Button(root, text='Set', font=('Arial', 12))
-text = tk.Text(root)
+text = tk.Text(root, width=800, height=30)
 
 # bind function
 root.bind('<Return>', set_size)
@@ -39,6 +39,6 @@ height_label.grid(column=0, row=2, sticky='w')
 ent1.grid(column=0, row=1, sticky='e')
 ent2.grid(column=0, row=2, sticky='e')
 btn.grid(column=1, row=1, rowspan=2, sticky='news', padx=10)
-text.grid(columnspan=10, sticky='news')
+text.grid(columnspan=10)
 
 root.mainloop()  # display window
