@@ -46,12 +46,12 @@ for i in get_directory_list('x:/'):
 # button section
 open_btn = tk.Button(root, text='Open', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
                      activebackground='#404040')
-rename_btn = tk.Button(root, text='Rename', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
-                       activebackground='#404040')
 delete_btn = tk.Button(root, text='Delete', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
-                       activebackground='#404040')
+                       activebackground='#404040', command=delete)
 copy_btn = tk.Button(root, text='Copy', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
                      activebackground='#404040')
+update_btn = tk.Button(root, text='Update', font=('Arial', 14), border=0, bg='#242424', fg='#d1d1d1',
+                       activebackground='#404040')
 
 # bind function
 dir_list.bind('<Double-Button-1>', display_content)
@@ -63,8 +63,8 @@ content_title.grid(column=2, columnspan=2, row=0, sticky='news')
 dir_list.grid(columnspan=2, row=1, sticky='news', padx=(0, 5))
 content_list.grid(column=2, columnspan=2, row=1, sticky='news', padx=(5, 0))
 open_btn.grid(column=0, row=2, sticky='news')
-rename_btn.grid(column=1, row=2, sticky='news')
-delete_btn.grid(column=2, row=2, sticky='news')
-copy_btn.grid(column=3, row=2, sticky='news')
+delete_btn.grid(column=1, row=2, sticky='news')
+copy_btn.grid(column=2, row=2, sticky='news')
+update_btn.grid(column=3, row=2, sticky='news')
 
 root.mainloop()  # display window
