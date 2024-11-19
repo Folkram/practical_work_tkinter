@@ -21,3 +21,4 @@ list of works:
 18. tkinter18.py - simple animation
 19. tkinter19.py - image
 20. tkinter20.py - image 2
+21. tkinter21.1.py - set size for text field
