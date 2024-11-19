@@ -20,3 +20,4 @@ list of works:
 17. tkinter17.py - tank
 18. tkinter18.py - simple animation
 19. tkinter19.py - image
+20. tkinter20.py - image 2
