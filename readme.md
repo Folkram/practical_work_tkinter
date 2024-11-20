@@ -26,3 +26,5 @@ list of works:
 23. tkinter22.1.py - diagram
 24. tkinter22.2.py - animation 2.0
 25. tkinter23.py - bus schedules
+
+All the work is done!
