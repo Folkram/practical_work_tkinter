@@ -4,7 +4,7 @@ import tkinter as tk
 # root window
 root = tk.Tk()
 root.title('Diagrams')
-root.geometry('800x600')
+root.geometry('700x600')
 
 # widget section
 can = tk.Canvas(root, width=800, height=600, border=0, highlightthickness=0)
