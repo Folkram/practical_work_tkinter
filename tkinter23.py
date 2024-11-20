@@ -98,4 +98,24 @@ shi_90_time.grid(column=6, row=3, sticky='news', pady=(0, 5))
 shi_5a_time = tk.Label(main_frame, text='19', bg='#919191', font=('Arial', 12))
 shi_5a_time.grid(column=6, row=4, sticky='news')
 
+# functional
+# input
+input_frame = tk.Frame(main_frame, bg='#2e2e2e')
+input_frame.grid(columnspan=3, column=0, rowspan=5, row=5, sticky='news', padx=5, pady=(10, 0))
+
+# content
+tk.Label(input_frame, text='Select Stop', bg='#2e2e2e', fg='#ebebeb', font=('Arial', 12)).pack(fill='both', expand=1)
+tk.Entry(input_frame, bg='#919191', bd=0,font=('Arial', 12)).pack(fill='both', expand=1)
+tk.Button(input_frame, text='Determine', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
+          activebackground='#919191', activeforeground='#2e2e2e').pack(fill='both', expand=1)
+tk.Button(input_frame, text='Clear', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
+          activebackground='#919191', activeforeground='#2e2e2e').pack(fill='both', expand=1)
+(tk.Button(input_frame, text='Exit', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
+           activebackground='#919191', activeforeground='#2e2e2e', command=lambda: root.destroy())
+ .pack(fill='both', expand=1))
+
+# output
+output_frame = tk.Frame(main_frame, bg='#2e2e2e')
+output_frame.grid(columnspan=4, column=3, rowspan=5, row=5, sticky='news', padx=5, pady=(10, 0))
+
 root.mainloop()  # display window
