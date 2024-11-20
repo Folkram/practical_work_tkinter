@@ -24,3 +24,4 @@ list of works:
 21. tkinter21.1.py - set size for text field
 22. tkinter21.2.py - file Explorer
 23. tkinter22.1.py - diagram
+24. tkinter22.2.py - animation 2.0
