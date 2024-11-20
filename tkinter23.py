@@ -4,7 +4,7 @@ import tkinter as tk
 # root window
 root = tk.Tk()
 root.title('Bus Schedules')
-root.geometry('1000x500')
+root.geometry('1000x310')
 
 # widget section
 main_frame = tk.Frame(root, bg='#454545')
@@ -105,7 +105,7 @@ input_frame.grid(columnspan=3, column=0, rowspan=5, row=5, sticky='news', padx=5
 
 # content
 tk.Label(input_frame, text='Select Stop', bg='#2e2e2e', fg='#ebebeb', font=('Arial', 12)).pack(fill='both', expand=1)
-tk.Entry(input_frame, bg='#919191', bd=0,font=('Arial', 12)).pack(fill='both', expand=1)
+tk.Entry(input_frame, bg='#919191', bd=0, font=('Arial', 12)).pack(fill='both', expand=1)
 tk.Button(input_frame, text='Determine', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
           activebackground='#919191', activeforeground='#2e2e2e').pack(fill='both', expand=1)
 tk.Button(input_frame, text='Clear', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
