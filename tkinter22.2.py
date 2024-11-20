@@ -1,5 +1,6 @@
 # import module
 import tkinter as tk
+import random as rm
 
 
 # function section
@@ -8,10 +9,16 @@ def move_figure():  # move figure diagonally
 
     x1, y1, x2, y2 = can.coords('figure')  # figure coords
 
-    # Check if the edges have been reached
+    # check if the edges have been reached
     if x1 <= 0 or x2 >= 800:  # right or left edges
+        for i in range(2, 8):  # iterating through all parts of figure
+            color = f'#{rm.randint(0, 9)}{rm.randint(0, 9)}{rm.randint(0, 9)}'  # random color
+            can.itemconfig(i, fill=color)  # set color
         vx *= -1
     if y1 <= 0 or y2 >= 600:  # top or bottom edges
+        for i in range(2, 8):
+            color = f'#{rm.randint(0, 9)}{rm.randint(0, 9)}{rm.randint(0, 9)}'  # random color
+            can.itemconfig(i, fill=color)   # set color
         vy *= -1
 
     can.move('figure', vx, vy)
