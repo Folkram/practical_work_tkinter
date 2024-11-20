@@ -1,10 +1,67 @@
 # import module
 import tkinter as tk
+from tkinter import  messagebox as mb
+
+
+# function section
+def get_time():
+    global pol, gen, hol, mon, kar, shi
+    inp = stop.get()
+
+    if inp == '1' or inp == 'Polyclinic No. 4':
+        display_time(pol)
+    elif inp == '2' or inp == 'General Lizyukov Street':
+        display_time(gen)
+    elif inp == '3' or inp == 'Holzunov Street':
+        display_time(hol)
+    elif inp == '4' or inp == 'Monument of Glory':
+        display_time(mon)
+    elif inp == '5' or inp == 'Karpinski Street':
+        display_time(kar)
+    elif inp == '6' or inp == 'Shishkov Street':
+        display_time(shi)
+    else:
+        mb.showerror('Input error', 'Incorrect data has been entered')
+
+
+def display_time(buses):
+    output.config(state='normal')
+    output.delete(1.0, 'end')
+    for i in buses:
+        output.insert(1.0, f'Way by bus {i} will take {buses.get(i)} min.\n\n')
+
+    min_time = min(buses.values())
+    min_bus = get_key(buses, min_time)
+    output.insert('end', f'Shortest way is by bus {min_bus} takes {min_time} min.')
+
+    output.config(state='disabled')
+
+
+def get_key(d, value):
+    for i, j in d.items():
+        if j == value:
+            return i
+
+
+def clear():
+    output.config(state='normal')
+    stop.delete(0, 'end')
+    output.delete(1.0, 'end')
+    output.config(state='disabled')
+
 
 # root window
 root = tk.Tk()
 root.title('Bus Schedules')
 root.geometry('1000x310')
+
+# bus stops
+pol = {38: 5, 125: 15, 90: 27, '5a': 4}
+gen = {125: 25, 90: 17, '5a': 42}
+hol = {38: 23, 90: 13}
+mon = {38: 47, 125: 33, 90: 69}
+kar = {125: 11}
+shi = {38: 4, 125: 77, '5a': 19}
 
 # widget section
 main_frame = tk.Frame(root, bg='#454545')
@@ -105,11 +162,12 @@ input_frame.grid(columnspan=3, column=0, rowspan=5, row=5, sticky='news', padx=5
 
 # content
 tk.Label(input_frame, text='Select Stop', bg='#2e2e2e', fg='#ebebeb', font=('Arial', 12)).pack(fill='both', expand=1)
-tk.Entry(input_frame, bg='#919191', bd=0, font=('Arial', 12)).pack(fill='both', expand=1)
+stop = tk.Entry(input_frame, bg='#919191', bd=0, font=('Arial', 12))
+stop.pack(fill='both', expand=1)
 tk.Button(input_frame, text='Determine', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
-          activebackground='#919191', activeforeground='#2e2e2e').pack(fill='both', expand=1)
+          activebackground='#919191', activeforeground='#2e2e2e', command=get_time).pack(fill='both', expand=1)
 tk.Button(input_frame, text='Clear', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
-          activebackground='#919191', activeforeground='#2e2e2e').pack(fill='both', expand=1)
+          activebackground='#919191', activeforeground='#2e2e2e', command=clear).pack(fill='both', expand=1)
 (tk.Button(input_frame, text='Exit', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Arial', 12),
            activebackground='#919191', activeforeground='#2e2e2e', command=lambda: root.destroy())
  .pack(fill='both', expand=1))
@@ -117,5 +175,8 @@ tk.Button(input_frame, text='Clear', bg='#2e2e2e', fg='#ebebeb', bd=0, font=('Ar
 # output
 output_frame = tk.Frame(main_frame, bg='#2e2e2e')
 output_frame.grid(columnspan=4, column=3, rowspan=5, row=5, sticky='news', padx=5, pady=(10, 0))
+output = tk.Text(output_frame, bg='#2e2e2e', fg='#ebebeb', font=('Arial', 12), width=1, height=4, bd=0)
+output.config(state='disabled')
+output.pack(fill='both', expand=1)
 
 root.mainloop()  # display window
