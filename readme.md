@@ -25,3 +25,4 @@ list of works:
 22. tkinter21.2.py - file Explorer
 23. tkinter22.1.py - diagram
 24. tkinter22.2.py - animation 2.0
+25. tkinter23.py - bus schedules
