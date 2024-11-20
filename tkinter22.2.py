@@ -1,6 +1,23 @@
 # import module
 import tkinter as tk
 
+
+# function section
+def move_figure():  # move figure diagonally
+    global vx, vy  # get speed
+
+    x1, y1, x2, y2 = can.coords('figure')  # figure coords
+
+    # Check if the edges have been reached
+    if x1 <= 0 or x2 >= 800:  # right or left edges
+        vx *= -1
+    if y1 <= 0 or y2 >= 600:  # top or bottom edges
+        vy *= -1
+
+    can.move('figure', vx, vy)
+    can.after(10, move_figure)
+
+
 # root window
 root = tk.Tk()
 root.title('Animation 2.0')
@@ -12,6 +29,10 @@ can = tk.Canvas(root, bg='black', border=0, highlightthickness=0, width=800, hei
 can.pack()
 
 # figure
+# speed
+vx = 5
+vy = 5
+
 # size
 fig_width = 800/6
 fig_height = 600/7
@@ -26,5 +47,8 @@ can.create_rectangle(fig_width*4/6, 0, fig_width*5/6, fig_height, width=0, fill=
 can.create_rectangle(fig_width*5/6, 0, fig_width, fig_height, width=0, fill='gray', tags='figure')  # part 6
 # figure text
 can.create_text(67, 40, text='no signal', font=('Fixedsys', 17, 'bold'), fill='black', justify='center', tags='figure')
+
+can.move('figure', 10, 10)
+move_figure()
 
 root.mainloop()  # display window
